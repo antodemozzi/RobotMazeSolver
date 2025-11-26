@@ -47,7 +47,6 @@ void RightHandRuleRobot::goToExit(Maze& m){
 		}
 	}
 }
-//DA COMPLETARE:IDEA GIUSTA POCAMADONNAAAAAAAAAAAAAAA
 
 void RightHandRuleRobot::goUp(Maze& m){
 	while( m.getCharAround(4) == '*' && m.getCharAround(2) != '*'){
@@ -160,4 +159,5 @@ void RightHandRuleRobot::move(Maze& m){
 		return;
 	}
 	goUp(m);
+
 }
