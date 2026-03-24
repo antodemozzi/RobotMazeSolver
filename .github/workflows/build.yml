@@ -19,8 +19,16 @@ jobs:
         version: latest
         platform: x64
 
-    - name: Build
+    - name: Build with Make
       run: make
 
+    - name: Clean Make build
+      run: make clean
+
+    - name: Build with CMake
+      run: |
+        cmake -B build
+        cmake --build build
+
     - name: Run solver
-      run: ./maze_solver
+      run: ./build/maze_solver

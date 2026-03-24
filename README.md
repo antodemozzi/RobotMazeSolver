@@ -1,69 +1,63 @@
-# Maze Solver — Professional C++ OOP Project
+# C++ Object-Oriented Maze Solver 🤖🏁
 
-A modern C++17 maze-solving project that demonstrates **object-oriented programming** and **polymorphism**. A robot navigates a 9×9 text-based maze using one of two interchangeable strategies.
+[![C++17](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/)
+[![Build Status](https://github.com/tuo-nome-utente/nome-della-repo/actions/workflows/build.yml/badge.svg)](https://github.com/tuo-nome-utente/nome-della-repo/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-| Strategy | Class | Description |
+A modern, robust, and highly visual C++ application that simulates a robot autonomously navigating a maze. 
+
+It demonstrates clean architecture, **Object-Oriented Programming (OOP)**, **polymorphism**, and includes a real-time **ANSI-colored console animation** of the robot searching for the exit.
+
+*(Add a GIF here of the terminal animation!)*
+
+---
+
+## 🏗️ Architecture & OOP Principles
+
+This project is built to demonstrate production-ready C++ practices:
+
+- **Inheritance & Polymorphism**: A pure abstract `Robot` base class defines a strictly enforced `move()` contract. Derived classes (`RandomRobot`, `RightHandRuleRobot`) implement completely different decision trees while being treated uniformly by the caller.
+- **Virtual Destructors**: The base class ensures safe polymorphic deletion via `virtual ~Robot() = default;`.
+- **Strongly-typed Enums**: Directions are strictly scoped using `enum class Direction` instead of ambiguous raw integers, eliminating whole classes of logic bugs.
+- **Modern PRNG**: Replaced unsafe legacy random functions with `<random>`'s `std::mt19937` (Mersenne Twister engine), seeded securely via `std::random_device`, instantiated efficiently as a class member.
+- **Const Correctness & Encapsulation**: Method mutations are strictly locked down. The `Maze` acts as the single source of truth for map bounds (`constexpr`).
+
+## 🗺️ Strategies
+
+| Strategy | Engine Class | Algorithm Description |
 |---|---|---|
-| **Random Walk** | `RandomRobot` | Picks a random direction each step until it stumbles upon the exit. Uses `std::mt19937` for uniform PRNG. |
-| **Right-Hand Rule** | `RightHandRuleRobot` | Follows the wall with its right hand — a classic deterministic algorithm. |
+| **Random Walk** | `RandomRobot` | Picks a valid neighboring cell at random. Brute-force simulation. |
+| **Right-Hand Rule** | `RightHandRuleRobot` | A classic maze-solving heuristic. It keeps its "right hand" touching the wall at all times, guaranteeing an exit in standard contiguous mazes. |
 
-## Project Structure
+## 🚀 Building the Project
 
-```
-.
-├── Makefile               # Build system
-├── README.md              # Project documentation
-├── .gitignore             # Git ignore file
-├── include/               # Header files (.h)
-│   ├── Maze.h
-│   ├── Robot.h            # Abstract base class
-│   ├── RandomRobot.h
-│   └── RightHandRuleRobot.h
-├── src/                   # Source files (.cpp)
-│   ├── Maze.cpp
-│   ├── RandomRobot.cpp
-│   ├── RightHandRuleRobot.cpp
-│   └── main.cpp           # Entry point
-└── data/                  # Assets
-    └── maze.txt           # Maze layout
+This repository supports both standard `Make` and modern `CMake` build pipelines.
+
+### Option A: CMake (Industry Standard)
+```bash
+# Generate build files
+cmake -B build
+
+# Compile the project
+cmake --build build
+
+# Run the executable
+./build/maze_solver
 ```
 
-## Maze Format
-
-The maze is defined in a plain text file (`data/maze.txt`) as a 9×9 character grid:
-- `*` : Wall
-- ` ` : Open path
-- `S` : Start position
-- `E` : Exit
-
-## Build & Run
-
-### Using Make
-To compile the project and place object files in a `build/` directory out of sight:
+### Option B: Make (Simple)
 ```bash
 make
-```
-
-To run the compiled binary:
-```bash
-make run
-# or simply
 ./maze_solver
 ```
 
-To clean the build folder and binary:
-```bash
-make clean
-```
+## 🎥 Visual WOW Factor: ANSI Animations
+Forget hunting raw coordinates in a log file. 
+This solver utilizes **Virtual Terminal Processing** (compatible out-of-the-box with Unix and modern Windows CMD) to draw the maze using standard **ANSI color codes**.
+- 🟦 **Walls (`*`)** are rendered in solid blue blocks.
+- 🟨 **Endpoints (`S`, `E`)** are highlighted in yellow.
+- 🟩 **Robot (`R`)** pulses in bold green as it traverses the map in real-time.
 
-## Example Output
-
-```
-=== Random Robot ===
-position: x=4 y=7
-exit found! position: x=0 y=6
-
-=== Right-Hand Rule Robot ===
-position: x=4 y=7
-exit found! position: x=0 y=6
-```
+## 🛠️ Modifying the Maze
+You can test the robots on your own layout by modifying `/data/maze.txt`.
+Ensure your maze is a 9x9 grid, securely enclosed by walls (`*`), containing exactly one Start (`S`) and at least one Exit (`E`).
