@@ -1,0 +1,26 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up GCC
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: latest
+        platform: x64
+
+    - name: Build
+      run: make
+
+    - name: Run solver
+      run: ./maze_solver

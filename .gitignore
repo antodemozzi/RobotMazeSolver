@@ -1,0 +1,15 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+maze_solver
+
+# IDE files
+.vscode/
+.idea/
+*.sln
+*.vcxproj*
+
+# OS files
+.DS_Store
+Thumbs.db
