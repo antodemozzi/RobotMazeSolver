@@ -1,4 +1,4 @@
-# C++ Object-Oriented Maze Solver 🤖🏁
+# C++ Object-Oriented Maze Solver 
 
 [![C++17](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/)
 [![Build Status](https://github.com/tuo-nome-utente/nome-della-repo/actions/workflows/build.yml/badge.svg)](https://github.com/tuo-nome-utente/nome-della-repo/actions)
@@ -12,7 +12,7 @@ It demonstrates clean architecture, **Object-Oriented Programming (OOP)**, **pol
 
 ---
 
-## 🏗️ Architecture & OOP Principles
+##  Architecture & OOP Principles
 
 This project is built to demonstrate production-ready C++ practices:
 
@@ -22,14 +22,14 @@ This project is built to demonstrate production-ready C++ practices:
 - **Modern PRNG**: Replaced unsafe legacy random functions with `<random>`'s `std::mt19937` (Mersenne Twister engine), seeded securely via `std::random_device`, instantiated efficiently as a class member.
 - **Const Correctness & Encapsulation**: Method mutations are strictly locked down. The `Maze` acts as the single source of truth for map bounds (`constexpr`).
 
-## 🗺️ Strategies
+##  Strategies
 
 | Strategy | Engine Class | Algorithm Description |
 |---|---|---|
 | **Random Walk** | `RandomRobot` | Picks a valid neighboring cell at random. Brute-force simulation. |
 | **Right-Hand Rule** | `RightHandRuleRobot` | A classic maze-solving heuristic. It keeps its "right hand" touching the wall at all times, guaranteeing an exit in standard contiguous mazes. |
 
-## 🚀 Building the Project
+##  Building the Project
 
 This repository supports both standard `Make` and modern `CMake` build pipelines.
 
