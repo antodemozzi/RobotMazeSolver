@@ -1,15 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(MazeSolver CXX)
 
-# Require C++17 standard
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-# Treat warnings as errors for a clean professional codebase
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-
-# Define the source files
 set(SOURCES
     src/main.cpp
     src/Maze.cpp
@@ -17,8 +8,16 @@ set(SOURCES
     src/RandomRobot.cpp
 )
 
-# Create the executable
 add_executable(maze_solver ${SOURCES})
 
-# Specify include directories
 target_include_directories(maze_solver PRIVATE include)
+target_compile_features(maze_solver PRIVATE cxx_std_17)
+
+if(MSVC)
+    target_compile_options(maze_solver PRIVATE /W4)
+else()
+    target_compile_options(maze_solver PRIVATE -Wall -Wextra)
+endif()
+
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/data"
+     DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

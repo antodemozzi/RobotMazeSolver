@@ -1,6 +1,10 @@
 ```gitignore
 build/
 build_cmake/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.cmake
 
 # Build artifacts
 *.o
