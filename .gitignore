@@ -1,3 +1,7 @@
+```gitignore
+build/
+build_cmake/
+
 # Build artifacts
 *.o
 *.obj
