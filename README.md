@@ -1,9 +1,7 @@
 # C++ Object-Oriented Maze Solver 
 
 [![C++17](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/)
-[![Build Status](https://github.com/tuo-nome-utente/nome-della-repo/actions/workflows/build.yml/badge.svg)](https://github.com/tuo-nome-utente/nome-della-repo/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+[![Build Status](https://github.com/antodemozzi/nome-della-repo/actions/workflows/build.yml/badge.svg)](https://github.com/antodemozzi/nome-della-repo/actions)
 A modern, robust, and highly visual C++ application that simulates a robot autonomously navigating a maze. 
 
 It demonstrates clean architecture, **Object-Oriented Programming (OOP)**, **polymorphism**, and includes a real-time **ANSI-colored console animation** of the robot searching for the exit.
